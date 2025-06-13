@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>槟城- 观音诞点灯- 报名表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom font for better Mandarin display */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .form-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #a855f7;
+        }
+        input[type="checkbox"]:checked + label span {
+            border-color: #a855f7;
+            background-color: #a855f7;
+            color: white;
+        }
+        label.required::after {
+            content: ' *';
+            color: #ef4444;
+        }
+        .sponsor-input-group {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #a0aec0;
+            pointer-events: none;
+        }
+        input.invalid-chinese {
+            border-color: #ef4444 !important;
+            background-color: #FFF5F5;
+        }
+        .chinese-hint {
+            font-size: 0.75rem;
+            color: #6B7280;
+            margin-top: 0.25rem;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex items-center justify-center min-h-screen">
+    <div class="max-w-3xl w-full">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">【观音诞】点灯- 报名表</h1>
+        <p class="text-center text-gray-600 mb-8">供灯功德：光明，智慧圆满、永断无明</p>
+
+
+<div class="bg-primary-50 p-4 rounded-md mb-6 text-center">
+    <h3 class="text-lg font-semibold text-gray-700 mb-2">主办单位 (Organizer)</h3>
+    
+    <div class="flex justify-center items-start gap-2 mb-1">
+        <!-- Location Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 2a6 6 0 00-6 6c0 4.243 6 10 6 10s6-5.757 6-10a6 6 0 00-6-6zM8 8a2 2 0 114 0 2 2 0 01-4 0z" clip-rule="evenodd" />
+        </svg>
+        <p class="text-sm text-gray-700">槟城国际禅修中心 (Penang International Meditation Center)</p>
+    </div>
+    
+    <p class="text-sm text-gray-700">41, Persiaran Tanjung Bunga 3, Tanjung Bungah, 11200 Penang, Malaysia.</p>
+    
+    <div class="flex justify-center items-center gap-2 mt-2">
+        <!-- Phone Icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M2.003 5.884l2-3A1 1 0 015.003 2h2a1 1 0 01.894.553l1.382 2.764a1 1 0 01-.447 1.342l-1.382.69a11.037 11.037 0 005.292 5.292l.69-1.382a1 1 0 011.342-.447l2.764 1.382A1 1 0 0118 12.997v2a1 1 0 01-.884.993l-3 2a1 1 0 01-1.116-.127C8.774 15.84 4.16 11.226 2.13 7.003A1 1 0 012.003 5.884z" />
+        </svg>
+        <p class="text-sm text-gray-700">询问窗口 (Contact): 012-6616325</p>
+    </div>
+</div>
+
+            
+        <form id="donationForm" class="space-y-6">
+            <!-- Contact Information Section -->
+            <div class="form-section">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">联系方式</h2>
+                
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 required">姓名 (Name in Chinese)</label>
+                    <p class="text-xs text-gray-500 mb-1">请填写中文全名</p>
+                    <input type="text" id="name" name="name" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                    <p class="chinese-hint">仅限中文汉字，不可包含标点符号或空格</p>
+                    <div id="nameError" class="error-message hidden"></div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="whatsapp" class="block text-sm font-medium text-gray-700 required">Whatsapp 联络号码 (Whatsapp Contact Number)</label>
+                    <p class="text-xs text-gray-500 mb-1">请填写有效联络号码</p>
+                    <input type="tel" id="whatsapp" name="whatsapp" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                    <div id="whatsappError" class="error-message hidden"></div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 required">电邮地址 (Email Address)</label>
+                    <input type="email" id="email" name="email" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                    <div id="emailError" class="error-message hidden"></div>
+                </div>
+            </div>
+
+            <div class="form-section bg-gradient-to-b from-primary-50 to-primary-100 border-primary-500">
+    <h2 class="text-xl font-semibold text-primary-800 mb-4 required">點燈祈福</h2>
+    <div class="mb-4 bg-white bg-opacity-70 p-6 rounded-md border border-primary-200 shadow-sm">
+        <p class="text-lg font-medium text-primary-700 mb-4 ">回到自性佛，點燃不昧明燈 ——心道法師</p>
+        <div class="space-y-4 text-primary-800">
+            <p>「燈火不熄，慧光普照，破除黑暗，永度眾生」，意指佛陀以智慧劃破愚癡與無明，只要燈明處，佛的慈光善妙便能自然遍照寰宇眾生。</p>
+            <p>點佛法的光，也是燃起智慧的光。</p>
+            <p>點一盞燈，讓心頭常保光明：唯願眾人福，盼大家隨喜平安。</p>
+            <p>為自己與家人誠心點燈供佛，點亮一整年無盡的光明心願。</p>
+        </div>
+    </div>
+</div>
+
+
+            
+            <!-- Lamp Type Selection Section -->
+            <div class="form-section">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4 required">选择灯的种类 (Select Lamp Type)</h2>
+
+
+    <div class="mb-4 bg-primary-50 p-4 rounded-md">
+    <p class="text-sm font-medium text-gray-700 mb-2">供灯功德：光明，智慧圆满、永断无明</p>
+        <div>
+            <p class="text-sm font-semibold">葫芦灯：RM150 / 一盏 (个人名字/合家)</p>
+        </div>
+        <div>
+            <p class="text-sm font-semibold">点灯：RM10 / 一盏（个人名字）</p>
+        </div>
+</div>
+
+
+                <p class="text-xs text-gray-500 mb-3">请选择您要供奉的灯的种类并填写数量</p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" id="lampType1" name="lampTypeCheckbox" data-price="10" data-lamp-name="灯" class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300">
+                        <label for="lampType1" class="block text-sm font-medium text-gray-700 flex items-center space-x-2">
+                            <span class="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium bg-primary-100 text-primary-800 border border-transparent transition-all duration-200 ease-in-out">
+                                灯 (RM10)
+                            </span>
+                        </label>
+                        <input type="number" id="lamp1Quantity" name="lamp1Quantity" value="0" min="0" 
+                                class="w-24 px-3 py-1.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm text-center">
+                        <span class="text-sm font-medium text-gray-600">数量</span>
+                    </div>
+
+                    <div class="flex items-center space-x-3">
+                        <input type="checkbox" id="lampType2" name="lampTypeCheckbox" data-price="150" data-lamp-name="葫芦灯" class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300">
+                        <label for="lampType2" class="block text-sm font-medium text-gray-700 flex items-center space-x-2">
+                            <span class="inline-flex items-center px-3 py-1.5 rounded-md text-sm font-medium bg-primary-100 text-primary-800 border border-transparent transition-all duration-200 ease-in-out">
+                                葫芦灯 (RM150)
+                            </span>
+                        </label>
+                        <input type="number" id="lamp2Quantity" name="lamp2Quantity" value="0" min="0" 
+                                class="w-24 px-3 py-1.5 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm text-center">
+                        <span class="text-sm font-medium text-gray-600">数量</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sponsor Sections -->
+            <div id="allSponsorSections" class="space-y-6">
+                <div id="lamp1SponsorSection" class="form-section hidden">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4">灯 (RM10) 功德主姓名</h2>
+                    <p class="text-xs text-gray-500 mb-3">请填写功德主姓名。</p>
+                    <div id="lamp1SponsorInputsContainer" class="space-y-4"></div>
+                </div>
+
+                <div id="lamp2SponsorSection" class="form-section hidden">
+                    <h2 class="text-xl font-semibold text-gray-700 mb-4">葫芦灯 (RM150) 功德主姓名</h2>
+                    <p class="text-xs text-gray-500 mb-3">请填写功德主姓名。</p>
+                    <div id="lamp2SponsorInputsContainer" class="space-y-4"></div>
+                </div>
+            </div>
+
+            <!-- Bank Information Section -->
+            <div class="form-section">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">付款信息 (Payment Information)</h2>
+                
+                <div class="mb-4 bg-primary-50 p-4 rounded-md">
+                    <p class="text-sm font-medium text-gray-700 mb-2">请汇款至以下账户 (Please bank in to):</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm font-semibold">银行名称 (Bank Name):</p>
+                            <p class="text-sm">HONG LEONG BANK</p>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold">账号 (Account Number):</p>
+                            <p class="text-sm">19400075131</p>
+                        </div>
+                        <div class="md:col-span-2">
+                            <p class="text-sm font-semibold">账户名称 (Account Name):</p>
+                            <p class="text-sm">Persatuan Penganut Agama Buddha Ling Jiou San Malaysia</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-3">请在上传收据前完成汇款 (Please complete the bank transfer before uploading receipt)</p>
+                </div>
+            </div>
+
+            <!-- Total and Receipt Section -->
+            <div class="form-section">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">总计与收据 (Total & Receipt)</h2>
+                
+                <div class="mb-4">
+                    <label class="block text-sm font-medium text-gray-700">总计 (Total)</label>
+                    <p id="totalAmount" class="mt-1 text-2xl font-bold text-primary-700">RM 0.00</p>
+                    <div id="totalBreakdown" class="text-sm text-gray-600 mt-1"></div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="receipt" class="block text-sm font-medium text-gray-700 required">上传收据 (Upload Payment Slip)</label>
+                    <p class="text-xs text-gray-500 mb-1">请上传您的汇款单子。</p>
+                    <input type="file" id="receipt" name="receipt" accept="image/*,application/pdf" required
+                            class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary-50 file:text-primary-700 hover:file:bg-primary-100">
+                    <div id="receiptError" class="error-message hidden"></div>
+                </div>
+            </div>
+
+            <button type="submit" id="submitButton" disabled
+                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out">
+                提交 (Submit)
+            </button>
+
+            <div id="messageArea" class="mt-4 p-3 rounded-md text-sm text-center hidden" role="alert"></div>
+        </form>
+    </div>
+
+    <!-- Rest of your JavaScript remains the same -->
+    <script>
+    const API_ENDPOINT = 'https://script.google.com/macros/s/AKfycbycHQ5is0mXOfZgoL_3G8nLaqc8hDAtaSYRIHN0a31hqTST15fVstlvjPxEKeIYLboq/exec';
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // DOM elements
+        const lampTypeCheckboxes = document.querySelectorAll('input[name="lampTypeCheckbox"]');
+        const lampQuantityInputs = document.querySelectorAll('input[name$="Quantity"]');
+        const totalAmountSpan = document.getElementById('totalAmount');
+        const totalBreakdownDiv = document.getElementById('totalBreakdown');
+        const donationForm = document.getElementById('donationForm');
+        const messageArea = document.getElementById('messageArea');
+        const receiptInput = document.getElementById('receipt');
+        const receiptErrorDiv = document.getElementById('receiptError');
+        const submitButton = document.getElementById('submitButton');
+
+        // Contact inputs
+        const contactInputs = {
+            name: { element: document.getElementById('name'), errorDiv: document.getElementById('nameError') },
+            whatsapp: { element: document.getElementById('whatsapp'), errorDiv: document.getElementById('whatsappError') },
+            email: { element: document.getElementById('email'), errorDiv: document.getElementById('emailError') }
+        };
+
+        // Sponsor sections
+        const lampSponsorData = {
+            'lamp1': {
+                section: document.getElementById('lamp1SponsorSection'),
+                inputsContainer: document.getElementById('lamp1SponsorInputsContainer'),
+            },
+            'lamp2': {
+                section: document.getElementById('lamp2SponsorSection'),
+                inputsContainer: document.getElementById('lamp2SponsorInputsContainer'),
+            }
+        };
+
+        // Strict Chinese characters only (no punctuation)
+        const strictChineseRegex = /^[\u4E00-\u9FFF\u3400-\u4DBF]+$/u;
+        const phoneRegex = /^\+?\d{8,15}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        const validateInput = (inputElement, errorDiv, type) => {
+            const value = inputElement.value.trim();
+            let isValid = true;
+            let errorMessage = '';
+
+            const isVisible = inputElement.offsetParent !== null || inputElement.type === 'file';
+
+            if (inputElement.hasAttribute('required') && isVisible && value === '') {
+                isValid = false;
+                errorMessage = '此项为必填。(This field is required.)';
+            } else if (value !== '') {
+                switch (type) {
+                    case 'chineseName':
+                        // Remove ALL non-Chinese characters (including punctuation)
+                        const cleanedValue = value.replace(/[^\u4E00-\u9FFF\u3400-\u4DBF]/gu, '');
+                        
+                        // Update the field with cleaned value
+                        if (value !== cleanedValue) {
+                            inputElement.value = cleanedValue;
+                        }
+                        
+                        if (!strictChineseRegex.test(cleanedValue)) {
+                            isValid = false;
+                            errorMessage = '请输入纯中文姓名，不能包含标点符号、英文或其他非中文字符。(Please enter Chinese characters only, no punctuation or other characters.)';
+                        }
+                        break;
+                    case 'whatsapp':
+                        const cleanedPhone = value.replace(/[\s-]/g, '');
+                        if (!phoneRegex.test(cleanedPhone)) {
+                            isValid = false;
+                            errorMessage = '请输入有效的电话号码 (例如: 0123456789 或 +60123456789)。(Please enter a valid phone number, e.g., 0123456789 or +60123456789.)';
+                        }
+                        break;
+                    case 'email':
+                        if (!emailRegex.test(value)) {
+                            isValid = false;
+                            errorMessage = '请输入有效的电邮地址。(Please enter a valid email address.)';
+                        }
+                        break;
+                    case 'receipt':
+                        const file = inputElement.files[0];
+                        if (file) {
+                            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
+                            if (!allowedTypes.includes(file.type)) {
+                                isValid = false;
+                                errorMessage = '仅支持 JPG, PNG, GIF, PDF 文件。(Only JPG, PNG, GIF, PDF files are supported.)';
+                            } else if (file.size > 5 * 1024 * 1024) {
+                                isValid = false;
+                                errorMessage = '文件大小不能超过 5MB。(File size cannot exceed 5MB.)';
+                            }
+                        } else if (inputElement.hasAttribute('required')) {
+                            isValid = false;
+                            errorMessage = '请上传付款凭证。(Please upload payment receipt.)';
+                        }
+                        break;
+                }
+            }
+
+            if (!isValid) {
+                inputElement.classList.add('border-red-500', 'invalid-chinese');
+                errorDiv.textContent = errorMessage;
+                errorDiv.classList.remove('hidden');
+            } else {
+                inputElement.classList.remove('border-red-500', 'invalid-chinese');
+                errorDiv.classList.add('hidden');
+                errorDiv.textContent = '';
+            }
+            return isValid;
+        };
+
+        const generateSponsorInputs = (lampPrefix, quantity) => {
+            const { inputsContainer } = lampSponsorData[lampPrefix];
+            inputsContainer.innerHTML = '';
+
+             if (quantity > 0) {
+        for (let i = 1; i <= quantity; i++) {
+            const sponsorGroup = document.createElement('div');
+            sponsorGroup.className = 'sponsor-input-group';
+
+            const label = document.createElement('label');
+            label.htmlFor = `${lampPrefix}Sponsor${String(i).padStart(2, '0')}`;
+            label.className = `block text-sm font-medium text-gray-700 required`; // Always required
+            label.textContent = `功德主${String(i).padStart(2, '0')}-中文姓名`;
+
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = `${lampPrefix}Sponsor${String(i).padStart(2, '0')}`;
+            input.name = `${lampPrefix}Sponsor${String(i).padStart(2, '0')}`;
+            input.className = 'mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm';
+            input.setAttribute('required', 'true'); // Always required
+
+
+                    input.addEventListener('input', (e) => {
+                        // Strict Chinese characters only for sponsors
+                        const filteredValue = e.target.value.replace(/[^\u4E00-\u9FFF\u3400-\u4DBF]/gu, '');
+                        if (e.target.value !== filteredValue) {
+                            e.target.value = filteredValue;
+                        }
+                        
+                        const currentErrorDiv = document.getElementById(`${lampPrefix}Sponsor${String(i).padStart(2, '0')}Error`);
+                        validateInput(input, currentErrorDiv, 'chineseName');
+                        checkFormValidity();
+                    });
+
+                    const errorDiv = document.createElement('div');
+                    errorDiv.id = `${lampPrefix}Sponsor${String(i).padStart(2, '0')}Error`;
+                    errorDiv.className = 'error-message hidden';
+
+                    sponsorGroup.appendChild(label);
+                    sponsorGroup.appendChild(input);
+                    sponsorGroup.appendChild(errorDiv);
+                    inputsContainer.appendChild(sponsorGroup);
+                }
+            }
+        };
+
+        const updateFormState = () => {
+            let totalCost = 0;
+            let breakdownHtml = '';
+
+            lampTypeCheckboxes.forEach(checkbox => {
+                const lampPrefix = checkbox.id.replace('lampType', 'lamp');
+                const quantityInput = document.getElementById(lampPrefix + 'Quantity');
+                const quantity = parseInt(quantityInput.value) || 0;
+                const price = parseFloat(checkbox.dataset.price);
+                const lampLabel = checkbox.dataset.lampName;
+
+                if (checkbox.checked && quantity > 0) {
+                    totalCost += quantity * price;
+                    breakdownHtml += `<p>${lampLabel} x ${quantity} = RM ${(quantity * price).toFixed(2)}</p>`;
+                    lampSponsorData[lampPrefix].section.classList.remove('hidden');
+                    generateSponsorInputs(lampPrefix, quantity);
+                } else {
+                    lampSponsorData[lampPrefix].section.classList.add('hidden');
+                    generateSponsorInputs(lampPrefix, 0);
+                }
+            });
+
+            totalAmountSpan.textContent = `RM ${totalCost.toFixed(2)}`;
+            totalBreakdownDiv.innerHTML = breakdownHtml;
+            checkFormValidity();
+        };
+
+        const checkFormValidity = () => {
+            let overallFormValid = true;
+
+            if (!validateInput(contactInputs.name.element, contactInputs.name.errorDiv, 'chineseName')) overallFormValid = false;
+            if (!validateInput(contactInputs.whatsapp.element, contactInputs.whatsapp.errorDiv, 'whatsapp')) overallFormValid = false;
+            if (!validateInput(contactInputs.email.element, contactInputs.email.errorDiv, 'email')) overallFormValid = false;
+            if (!validateInput(receiptInput, receiptErrorDiv, 'receipt')) overallFormValid = false;
+
+            for (const lampPrefix in lampSponsorData) {
+                const { section, inputsContainer } = lampSponsorData[lampPrefix];
+                if (!section.classList.contains('hidden')) {
+                    const currentSponsorInputs = inputsContainer.querySelectorAll('input[type="text"]');
+                    currentSponsorInputs.forEach(input => {
+                        const errorDiv = document.getElementById(input.id + 'Error');
+                        if (!validateInput(input, errorDiv, 'chineseName')) {
+                            overallFormValid = false;
+                        }
+                    });
+                }
+            }
+
+            let isLampSelectedWithQuantity = false;
+            lampTypeCheckboxes.forEach(checkbox => {
+                const quantityInput = document.getElementById(checkbox.id.replace('lampType', 'lamp') + 'Quantity');
+                if (checkbox.checked && (parseInt(quantityInput.value) || 0) > 0) {
+                    isLampSelectedWithQuantity = true;
+                }
+            });
+
+            if (!isLampSelectedWithQuantity) {
+                overallFormValid = false;
+            }
+
+            submitButton.disabled = !overallFormValid;
+        };
+
+        // Event Listeners
+        contactInputs.name.element.addEventListener('input', (e) => {
+            // Immediately filter to Chinese characters only
+            const filteredValue = e.target.value.replace(/[^\u4E00-\u9FFF\u3400-\u4DBF]/gu, '');
+            
+            // Update if value changed (prevents cursor jumping)
+            if (e.target.value !== filteredValue) {
+                e.target.value = filteredValue;
+            }
+            
+            validateInput(contactInputs.name.element, contactInputs.name.errorDiv, 'chineseName');
+            checkFormValidity();
+        });
+
+        contactInputs.name.element.addEventListener('blur', () => {
+            validateInput(contactInputs.name.element, contactInputs.name.errorDiv, 'chineseName');
+            checkFormValidity();
+        });
+
+        contactInputs.whatsapp.element.addEventListener('input', () => {
+            validateInput(contactInputs.whatsapp.element, contactInputs.whatsapp.errorDiv, 'whatsapp');
+            checkFormValidity();
+        });
+
+        contactInputs.email.element.addEventListener('input', () => {
+            validateInput(contactInputs.email.element, contactInputs.email.errorDiv, 'email');
+            checkFormValidity();
+        });
+
+        receiptInput.addEventListener('change', () => {
+            validateInput(receiptInput, receiptErrorDiv, 'receipt');
+            checkFormValidity();
+        });
+
+        lampTypeCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                const quantityInput = document.getElementById(checkbox.id.replace('lampType', 'lamp') + 'Quantity');
+                if (!checkbox.checked) {
+                    quantityInput.value = '0';
+                } else if (parseInt(quantityInput.value) === 0) {
+                    quantityInput.value = '1';
+                }
+                updateFormState();
+            });
+        });
+
+        lampQuantityInputs.forEach(input => {
+            input.addEventListener('input', () => {
+                const checkbox = document.getElementById(input.id.replace('lamp', 'lampType').replace('Quantity', ''));
+                if (parseInt(input.value) > 0) {
+                    checkbox.checked = true;
+                } else {
+                    checkbox.checked = false;
+                }
+                updateFormState();
+            });
+            input.addEventListener('blur', updateFormState);
+        });
+
+        // Initial setup
+        updateFormState();
+        checkFormValidity();
+
+        // Form Submission
+        donationForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            if (submitButton.disabled) {
+                messageArea.classList.remove('hidden', 'bg-blue-100', 'text-blue-800');
+                messageArea.classList.add('bg-yellow-100', 'text-yellow-800');
+                messageArea.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> 请填写所有必填项并修正错误。(Please fill in all required fields and correct errors.)';
+                return;
+            }
+
+            messageArea.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800', 'bg-yellow-100', 'text-yellow-800');
+            messageArea.classList.add('bg-blue-100', 'text-blue-800');
+            messageArea.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> 正在提交... (Submitting...)';
+
+            const data = {};
+            data['name'] = contactInputs.name.element.value.trim();
+            data['whatsapp'] = contactInputs.whatsapp.element.value.trim();
+            data['email'] = contactInputs.email.element.value.trim();
+
+            lampQuantityInputs.forEach(input => {
+                const quantity = parseInt(input.value) || 0;
+                if (quantity > 0) {
+                    data[input.name] = quantity;
+                    const lampCheckbox = document.getElementById(input.id.replace('lamp', 'lampType').replace('Quantity', ''));
+                    if (lampCheckbox) {
+                        data[lampCheckbox.dataset.lampName + 'Price'] = lampCheckbox.dataset.price;
+                    }
+                }
+            });
+
+            const allSponsorNames = {};
+            for (const lampPrefix in lampSponsorData) {
+                const { section, inputsContainer } = lampSponsorData[lampPrefix];
+                if (!section.classList.contains('hidden')) {
+                    const currentSponsorInputs = inputsContainer.querySelectorAll('input[type="text"]');
+                    currentSponsorInputs.forEach(input => {
+                        if (input.value.trim() !== '') {
+                            allSponsorNames[input.name] = input.value.trim();
+                        }
+                    });
+                }
+            }
+            data['sponsorNames'] = allSponsorNames;
+            data['totalAmount'] = totalAmountSpan.textContent;
+            data['totalBreakdown'] = totalBreakdownDiv.textContent.trim();
+
+            const receiptFile = receiptInput.files[0];
+            if (receiptFile) {
+                const reader = new FileReader();
+                reader.onload = async function(event) {
+                    data['receiptBase64'] = event.target.result;
+                    data['receiptFileName'] = receiptFile.name;
+                    data['receiptFileType'] = receiptFile.type;
+                    await sendDataToBackend(data);
+                };
+                reader.onerror = function() {
+                    console.error("File reading failed.");
+                    messageArea.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800');
+                    messageArea.classList.add('bg-red-100', 'text-red-800');
+                    messageArea.innerHTML = '<i class="fas fa-times-circle mr-2"></i> 读取收据文件失败。(Failed to read receipt file.)';
+                };
+                reader.readAsDataURL(receiptFile);
+            } else {
+                console.error("No receipt file attached during submission attempt.");
+                messageArea.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800');
+                messageArea.classList.add('bg-red-100', 'text-red-800');
+                messageArea.innerHTML = '<i class="fas fa-times-circle mr-2"></i> 提交失败：请务必上传付款凭证。(Submission failed: Please upload payment receipt.)';
+                submitButton.disabled = true;
+            }
+        });
+
+        async function sendDataToBackend(data) {
+            const url = API_ENDPOINT + '?cacheBuster=' + Date.now();
+
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.message || 'Network response was not ok');
+                }
+
+                messageArea.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-red-100', 'text-red-800', 'bg-yellow-100', 'text-yellow-800');
+                messageArea.classList.add('bg-green-100', 'text-green-800');
+                messageArea.innerHTML = `<i class="fas fa-check-circle mr-2"></i> ${result.message || '提交成功！(Submission successful!)'}`;
+
+                donationForm.reset();
+                updateFormState();
+                checkFormValidity();
+
+            } catch (error) {
+                console.error("Error submitting form:", error);
+                messageArea.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800');
+                messageArea.classList.add('bg-red-100', 'text-red-800');
+                messageArea.innerHTML = `<i class="fas fa-times-circle mr-2"></i> 提交失败：${error.message || '网络错误 (Network error)'}`;
+                submitButton.disabled = true;
+            }
+        }
+    });
+    </script>
+</body>
+</html>
