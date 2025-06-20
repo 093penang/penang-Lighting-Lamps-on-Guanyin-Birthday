@@ -1,3 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>槟城- 观音诞点灯- 报名表</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#faf5ff',
+                            100: '#f3e8ff',
+                            200: '#e9d5ff',
+                            300: '#d8b4fe',
+                            400: '#c084fc',
+                            500: '#a855f7',
+                            600: '#9333ea',
+                            700: '#7e22ce',
+                            800: '#6b21a8',
+                            900: '#581c87',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom font for better Mandarin display */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Noto Sans SC', 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        .form-section {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #a855f7;
+        }
+        input[type="checkbox"]:checked + label span {
+            border-color: #a855f7;
+            background-color: #a855f7;
+            color: white;
+        }
+        label.required::after {
+            content: ' *';
+            color: #ef4444;
+        }
+        .sponsor-input-group {
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .error-message {
+            color: #ef4444;
+            font-size: 0.75rem;
+            margin-top: 0.25rem;
+        }
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #a0aec0;
+            pointer-events: none;
+        }
+        input.invalid-chinese {
+            border-color: #ef4444 !important;
+            background-color: #FFF5F5;
+        }
+        .chinese-hint {
+            font-size: 0.75rem;
+            color: #6B7280;
+            margin-top: 0.25rem;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-5px); }
+            40%, 80% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex items-center justify-center min-h-screen">
+    <div class="max-w-3xl w-full">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">【观音诞】点灯- 报名表</h1>
+
+        
+                    <div class="form-section bg-gradient-to-b from-primary-50 to-primary-100 border-primary-500">
+    <h2 class="text-xl font-semibold text-primary-800 mb-4 required">點燈祈福</h2>
+    <div class="mb-4 bg-white bg-opacity-70 p-6 rounded-md border border-primary-200 shadow-sm">
+        <p class="text-lg font-medium text-primary-700 mb-4 ">回到自性佛，點燃不昧明燈 ——心道法師</p>
+        <div class="space-y-4 text-primary-800">
+            <p>「燈火不熄，慧光普照，破除黑暗，永度眾生」，意指佛陀以智慧劃破愚癡與無明，只要燈明處，佛的慈光善妙便能自然遍照寰宇眾生。</p>
+            <p>點佛法的光，也是燃起智慧的光。</p>
+            <p>點一盞燈，讓心頭常保光明：唯願眾人福，盼大家隨喜平安。</p>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="bg-primary-50 p-4 rounded-md mb-6 text-center">
+    <h3 class="text-lg font-semibold text-gray-700 mb-2">主办单位</h3>
+    
+    <div class="flex justify-center items-start gap-2 mb-1">
+
+        <p class="text-sm text-gray-700">槟城国际禅修中心 (Penang International Meditation Center)</p>
+    </div>
+    
+    <p class="text-sm text-gray-700">41, Persiaran Tanjung Bunga 3, Tanjung Bungah, 11200 Penang, Malaysia.</p>
+    
+    <div class="flex justify-center items-center gap-2 mt-2">
+        <p class="text-sm text-gray-700">询问窗口 (Contact): 012-6616325</p>
+    </div>
+</div>
+
+            
+        <form id="donationForm" class="space-y-6">
+            <!-- Contact Information Section -->
+            <div class="form-section">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4">联系方式</h2>
+                
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 required">姓名</label>
+                    <p class="text-xs text-gray-500 mb-1">请填写中文全名（简体）</p>
+                    <input type="text" id="name" name="name" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                    <div id="nameError" class="error-message hidden"></div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="whatsapp" class="block text-sm font-medium text-gray-700 required">Whatsapp 联络号码</label>
+                    <p class="text-xs text-gray-500 mb-1">请填写有效联络号码</p>
+                    <input type="tel" id="whatsapp" name="whatsapp" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                    <div id="whatsappError" class="error-message hidden"></div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="block text-sm font-medium text-gray-700 required">电邮地址</label>
+                    <input type="email" id="email" name="email" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                    <div id="emailError" class="error-message hidden"></div>
+                </div>
+            </div>
+
+
+
+            
+            <!-- Lamp Type Selection Section -->
+            <div class="form-section">
+                <h2 class="text-xl font-semibold text-gray-700 mb-4 required">功德项目:</h2>
+
+
+    <div class="mb-4 bg-primary-50 p-4 rounded-md">
+        <div>
+                        <p class="text-sm font-semibold">点灯：RM10 / 一盏（个人名字）</p>
+
+        </div>
+        <div>
                         <p class="text-sm font-semibold">葫芦灯：RM150 / 一盏 (个人名字/合家)</p>
 
         </div>
@@ -91,7 +255,6 @@
             <div id="messageArea" class="mt-4 p-3 rounded-md text-sm text-center hidden" role="alert"></div>
         </form>
     </div>
-
 
     <!-- Rest of your JavaScript remains the same -->
     <script>
