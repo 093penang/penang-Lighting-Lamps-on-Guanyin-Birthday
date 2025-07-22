@@ -133,10 +133,12 @@
                 </div>
 
                 <div class="mb-4">
-                    <label for="whatsapp" class="block text-sm font-medium text-gray-700 required">Whatsapp 联络号码</label>
-                    <p class="text-xs text-gray-500 mb-1">请填写有效联络号码</p>
-                    <input type="tel" id="whatsapp" name="whatsapp" required
-                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
+                    <label for="whatsapp" class="block text-sm font-medium text-gray-700 required">联络电话</label>
+                    <p class="text-xs text-gray-500 mb-1">请填写有效联络电话（无需空格或"-")</p>
+                        <input type="tel" id="whatsapp" name="whatsapp" required
+           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
+           placeholder="例如：0123456789 或 +60123456789"
+           oninput="formatPhoneNumber(this)">
                     <div id="whatsappError" class="error-message hidden"></div>
                 </div>
 
@@ -247,10 +249,14 @@
                 </div>
             </div>
 
-            <button type="submit" id="submitButton" disabled
-                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out">
-                提交 (Submit)
-            </button>
+<button type="submit" id="submitButton" disabled
+        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out">
+    提交 (Submit)
+</button>
+<div class="mt-2 text-center text-sm text-gray-500">
+    <p>按一次 Submit 即可，并耐心等待，请勿重复 Submit</p>
+    <p>Please click Submit only once and wait patiently, do not resubmit</p>
+</div>
 
             <div id="messageArea" class="mt-4 p-3 rounded-md text-sm text-center hidden" role="alert"></div>
         </form>
