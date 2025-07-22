@@ -225,15 +225,22 @@
                 </div>
             </div>
 
-            <button type="submit" id="submitButton" disabled
-                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out">
-                提交 (Submit)
-            </button>
-            <div class="mt-2 text-center text-xs text-gray-500">
-                <p>按一次 Submit 即可，并耐心等待，请勿重复 Submit</p>
-                <p>Please click Submit only once and wait patiently, do not resubmit</p>
-            </div>
-            <div id="messageArea" class="mt-4 p-3 rounded-md text-sm text-center hidden" role="alert"></div>
+
+            
+            
+            <button type="submit" id="submitButton"
+        class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-all duration-200 ease-in-out">
+    提交 (Submit)
+</button>
+<div class="mt-2 text-center text-xs text-gray-500">
+    <p>按一次 Submit 即可，并耐心等待，请勿重复 Submit</p>
+    <p>Please click Submit only once and wait patiently, do not resubmit</p>
+</div>
+<div id="messageArea" class="mt-4 p-3 rounded-md text-sm text-center hidden" role="alert"></div>
+
+
+
+            
         </form>
     </div>
 
@@ -251,6 +258,7 @@
         const receiptInput = document.getElementById('receipt');
         const receiptErrorDiv = document.getElementById('receiptError');
         const submitButton = document.getElementById('submitButton');
+
 
         // Contact inputs
         const contactInputs = {
@@ -559,16 +567,22 @@
         donationForm.addEventListener('submit', async (event) => {
             event.preventDefault();
 
-            if (submitButton.disabled) {
+            // Perform final validation before submission
+            checkFormValidity(); // Re-run validity check one last time
+            if (submitButton.disabled) { // If checkFormValidity found issues, the button will be disabled
                 messageArea.classList.remove('hidden', 'bg-blue-100', 'text-blue-800');
                 messageArea.classList.add('bg-yellow-100', 'text-yellow-800');
                 messageArea.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i> 请填写所有必填项并修正错误。(Please fill in all required fields and correct errors.)';
                 return;
             }
 
+            // Disable button and show processing message
+            submitButton.disabled = true;
+            submitButton.textContent = '提交中... (Submitting...)'; // Change button text
             messageArea.classList.remove('hidden', 'bg-green-100', 'text-green-800', 'bg-red-100', 'text-red-800', 'bg-yellow-100', 'text-yellow-800');
             messageArea.classList.add('bg-blue-100', 'text-blue-800');
             messageArea.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> 正在提交... (Submitting...)';
+
 
             const data = {};
             data['name'] = contactInputs.name.element.value.trim();
@@ -650,13 +664,17 @@
                 donationForm.reset();
                 updateFormState();
                 checkFormValidity();
+                
+                submitButton.disabled = false; // Re-enable the button
+                submitButton.textContent = '提交 (Submit)'; // Reset button text
 
             } catch (error) {
                 console.error("Error submitting form:", error);
                 messageArea.classList.remove('hidden', 'bg-blue-100', 'text-blue-800', 'bg-green-100', 'text-green-800', 'bg-yellow-100', 'text-yellow-800');
                 messageArea.classList.add('bg-red-100', 'text-red-800');
                 messageArea.innerHTML = `<i class="fas fa-times-circle mr-2"></i> 提交失败：${error.message || '网络错误 (Network error)'}`;
-                submitButton.disabled = true;
+                submitButton.disabled = false; // Re-enable the button
+                submitButton.textContent = '提交 (Submit)'; // Reset button text
             }
         }
     });
